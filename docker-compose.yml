@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  codebase-genius:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./outputs:/app/outputs
+      - ./logs:/app/logs
+    environment:
+      - JAC_SERVER_PORT=8000
+      - OUTPUT_DIR=/app/outputs
+    restart: unless-stopped
+
+  web-interface:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    ports:
+      - "3000:3000"
+    depends_on:
+      - codebase-genius
+    restart: unless-stopped
