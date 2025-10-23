@@ -1,0 +1,19 @@
+# Docker ignore file
+.git
+.gitignore
+README.md
+FINAL_README.md
+DEPLOYMENT_READY.md
+outputs/
+logs/
+*.log
+__pycache__/
+*.pyc
+.venv/
+venv/
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+.cache/

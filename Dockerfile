@@ -14,14 +14,23 @@ RUN apt-get update && apt-get install -y \
 # Install Jac
 RUN pip install jaclang
 
-# Copy project files
-COPY . .
+# Copy requirements first for better caching
+COPY requirements.txt .
 
 # Install Python dependencies
 RUN pip install -r requirements.txt
 
+# Copy codebase_genius directory
+COPY codebase_genius ./codebase_genius
+
+# Copy sample repository for testing
+COPY sample_repo ./sample_repo
+
 # Create output directories
 RUN mkdir -p outputs logs
+
+# Set working directory to where main.jac is located
+WORKDIR /app/codebase_genius
 
 # Expose port
 EXPOSE 8000
