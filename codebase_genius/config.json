@@ -1,0 +1,103 @@
+{
+  "system": {
+    "name": "Codebase Genius",
+    "version": "1.0.0",
+    "description": "AI-powered multi-agent code documentation system"
+  },
+
+  "server": {
+    "host": "localhost",
+    "port": 8000,
+    "timeout": 300
+  },
+
+  "processing": {
+    "max_file_size": 10485760,
+    "max_repo_size": 1073741824,
+    "supported_extensions": [
+      ".py", ".jac", ".js", ".ts", ".java", ".cpp", ".c", ".h",
+      ".md", ".txt", ".json", ".yaml", ".yml", ".xml", ".html", ".css"
+    ],
+    "ignored_directories": [
+      ".git", "__pycache__", "node_modules", ".vscode", ".idea",
+      "build", "dist", "target", ".pytest_cache", ".mypy_cache"
+    ]
+  },
+
+  "analysis": {
+    "extract_functions": true,
+    "extract_classes": true,
+    "extract_imports": true,
+    "build_call_graph": true,
+    "build_inheritance_graph": true,
+    "calculate_complexity": true,
+    "max_docstring_length": 500
+  },
+
+  "output": {
+    "directory": "./outputs",
+    "format": "markdown",
+    "include_diagrams": true,
+    "include_api_reference": true,
+    "include_metrics": true
+  },
+
+  "diagrams": {
+    "call_graph": {
+      "enabled": true,
+      "format": "mermaid",
+      "direction": "top-down"
+    },
+    "inheritance_graph": {
+      "enabled": true,
+      "format": "mermaid",
+      "direction": "top-down"
+    },
+    "file_structure": {
+      "enabled": true,
+      "format": "tree"
+    }
+  },
+
+  "agents": {
+    "repo_mapper": {
+      "enabled": true,
+      "readme_patterns": [
+        "README.md", "README.txt", "readme.md", "README.rst",
+        "README", "readme.txt"
+      ]
+    },
+    "code_analyzer": {
+      "enabled": true,
+      "languages": [
+        {"name": "Python", "extensions": [".py"]},
+        {"name": "Jac", "extensions": [".jac"]},
+        {"name": "JavaScript", "extensions": [".js", ".ts"]},
+        {"name": "Java", "extensions": [".java"]},
+        {"name": "C/C++", "extensions": [".c", ".cpp", ".h"]}
+      ]
+    },
+    "docgenie": {
+      "enabled": true,
+      "template": "comprehensive",
+      "sections": [
+        "overview", "structure", "analysis", "dependencies",
+        "diagrams", "installation", "usage", "api_reference"
+      ]
+    }
+  },
+
+  "logging": {
+    "level": "INFO",
+    "file": "./logs/codebase_genius.log",
+    "max_size": 10485760,
+    "backup_count": 5
+  },
+
+  "error_handling": {
+    "retry_attempts": 3,
+    "retry_delay": 2,
+    "timeout": 300,
+    "graceful_degradation": true
+  }
+}

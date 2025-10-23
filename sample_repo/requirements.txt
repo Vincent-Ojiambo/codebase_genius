@@ -1,0 +1,2 @@
+# Sample repository requirements
+# This project uses only standard library modules
